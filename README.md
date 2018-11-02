@@ -2,6 +2,11 @@
 
 #### Android Gradle plugin that takes JSON files from a specified path and turns the JSON keys into java static fields at build time. 
 
+## IMPORTANT NOTE
+```diff
+- The plugin only accepts JSON string values. If you want to support other primitives,
+- feel free to fork this repo and add the desired functionality.
+```
 ## Adding the dependecy
 ```gradle
 //in your root build.gradle
@@ -59,7 +64,6 @@ public final class JsonFile {
   public static final String KEY_TWO = "keyTwo";
 }
 ```
-# !!!! JSON files must contain only string values. Feel free to fork this repo and add the desired functionality. 
 
 #### Based on https://github.com/commonsguy/cw-omnibus/tree/master/Gradle/Staticizer
 
