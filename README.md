@@ -36,8 +36,8 @@ jsonStringStaticizer {
 ### Input JsonFile.json
 ```json
 {
-  "keyOne" : "Some value",
-  "keyTwo" : "Some other value"
+  "keyOne" : "Some value", //String values only
+  "keyTwo" : "Some other value" //String values only
 }
 ```
 ### Output JsonFile.java
