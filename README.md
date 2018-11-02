@@ -24,3 +24,35 @@ jsonStringStaticizer {
     sourceDir 'src/main/localizations' // source dir of Json files 
 }
 ```
+
+Input JsonFile.json
+```
+{
+  "key": "Enter SAID",
+  "applianceCategory": "Appliance Type"
+}
+```
+Output JsonFile.java
+
+```
+package com.desired.package.for.generated.class;
+
+import java.lang.String;
+
+/**
+ * Generated class based on the localizations file located 
+ *  in base/src/main/localizations/JsonFile.json
+ * Generation time: 11/02/2018  12:34:34
+ */
+public final class JsonFile {
+  /**
+   * Default value: "Some value"
+   */
+  public static final String KEY_ONE = "keyOne";
+
+  /**
+   * Default value: "Some other value"
+   */
+  public static final String KEY_TWO = "keyTwo";
+}
+```
