@@ -3,7 +3,7 @@
 
 #### Based on https://github.com/commonsguy/cw-omnibus/tree/master/Gradle/Staticizer
 
-### Gradle plugin that takes JSON files from a specified path and turns the JSON keys into java static fields at build time
+### Android Gradle plugin that takes JSON files from a specified path and turns the JSON keys into java static fields at build time
 
 ## Adding the dependecy
 ```gradle
