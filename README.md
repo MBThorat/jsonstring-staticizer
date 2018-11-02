@@ -16,7 +16,7 @@ Based on https://github.com/commonsguy/cw-omnibus/tree/master/Gradle/Staticizer
 	}
 
 # Applying the plugin
-```
+```gradle
 apply plugin: 'com.stefanhalus.jsonstring.staticizer'
 
 jsonStringStaticizer {
@@ -26,7 +26,7 @@ jsonStringStaticizer {
 ```
 
 Input JsonFile.json
-```
+```json
 {
   "key": "Enter SAID",
   "applianceCategory": "Appliance Type"
@@ -34,7 +34,7 @@ Input JsonFile.json
 ```
 Output JsonFile.java
 
-```
+```java
 package com.desired.package.for.generated.class;
 
 import java.lang.String;
