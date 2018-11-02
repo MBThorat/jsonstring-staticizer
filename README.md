@@ -1,7 +1,7 @@
 # jsonstring-staticizer
 Based on https://github.com/commonsguy/cw-omnibus/tree/master/Gradle/Staticizer
 
-# Gradle plugin that Takes a specified files and turns the JSON keys into java static fields
+# Gradle plugin that takes JSON files from a specified path and turns the JSON keys into java static fields at build time
 	allprojects {
 		repositories {
 			...
