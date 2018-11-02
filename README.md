@@ -28,8 +28,8 @@ jsonStringStaticizer {
 Input JsonFile.json
 ```json
 {
-  "key": "Enter SAID",
-  "applianceCategory": "Appliance Type"
+  "keyOne" : "Some value",
+  "keyTwo" : "Some other value"
 }
 ```
 Output JsonFile.java
