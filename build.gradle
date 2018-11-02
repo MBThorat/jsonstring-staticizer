@@ -21,6 +21,10 @@ def versions = [
         junit         : '4.12'
 
 ]
+def publish = [
+        groupId : "com.stefanhalus",
+        version : '0.0.6'
+]
 
 dependencies {
     compile gradleApi()
@@ -38,8 +42,8 @@ configurations.all {
     }
 }
 
-group 'com.stefanhalus'
-version '0.0.5'
+group publish.groupId
+version publish.version
 
 apply plugin: 'maven'
 
@@ -52,9 +56,10 @@ uploadArchives {
 publishing {
     publications {
         maven(MavenPublication) {
-            group ='com.stefanhalus'
+            group = publish.groupId
+            version = publish.version
             artifactId = rootProject.name
-            version ='0.0.5'
+
             from components.java
         }
     }
