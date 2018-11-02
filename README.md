@@ -46,7 +46,7 @@ package com.desired.package.for.generated.class;
 import java.lang.String;
 
 /**
- * Generated class based on the localizations file located 
+ * Generated class based on the JSON file located 
  *  in base/src/main/localizations/JsonFile.json
  * Generation time: 11/02/2018  12:34:34
  */
