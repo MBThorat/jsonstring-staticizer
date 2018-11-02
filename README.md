@@ -13,7 +13,7 @@ allprojects {
 	}
 }
 
-def jsonstring = '0.0.5'
+def jsonstring = '0.0.6'
 dependencies {
 	...
 	classpath "com.github.halusstefan:jsonstring-staticizer:$jsonstring"
