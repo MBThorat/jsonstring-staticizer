@@ -1,9 +1,6 @@
-# jsonstring-staticizer 
-#### Current version [![](https://jitpack.io/v/halusstefan/jsonstring-staticizer.svg)](https://jitpack.io/#halusstefan/jsonstring-staticizer)
+## jsonstring-staticizer [![](https://jitpack.io/v/halusstefan/jsonstring-staticizer.svg)](https://jitpack.io/#halusstefan/jsonstring-staticizer)
 
-#### Based on https://github.com/commonsguy/cw-omnibus/tree/master/Gradle/Staticizer
-
-### Android Gradle plugin that takes JSON files from a specified path and turns the JSON keys into java static fields at build time
+#### Android Gradle plugin that takes JSON files from a specified path and turns the JSON keys into java static fields at build time. 
 
 ## Adding the dependecy
 ```gradle
@@ -62,3 +59,10 @@ public final class JsonFile {
   public static final String KEY_TWO = "keyTwo";
 }
 ```
+# !!!! JSON files must contain only string values. Feel free to fork this repo and add the desired functionality. 
+
+#### Based on https://github.com/commonsguy/cw-omnibus/tree/master/Gradle/Staticizer
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
