@@ -29,7 +29,7 @@ public class JsonStringStaticizerGenerator {
         String basename = removeExtension(input.getAbsolutePath());
 
         TypeSpec.Builder builder = TypeSpec.classBuilder(basename).addModifiers(Modifier.PUBLIC, Modifier.FINAL);
-        builder.addJavadoc("Generated class based on the localizations file located \n " +
+        builder.addJavadoc("Generated class based on the JSON file located \n " +
                 "in " + input.getPath() + "\n" +
                 "Generation time: " + currentTime + "\n");
 
