@@ -29,7 +29,7 @@ public class JsonStringStaticizerTask extends DefaultTask {
 
         for(FileConfig fileConfig : files) {
             def inputFile = new File(project.getProjectDir(), fileConfig.fileName)
-            TypeSpec generated = localizationsGenerator.generate(inputFile, fileConfig)
+            TypeSpec generated = localizationsGenerator.generate(inputFile, fileConfig.targetJsonKey, fileConfig.outputFileName)
             localizationsGenerator.writeToOutput(packageName, outputDir, generated)
         }
     }

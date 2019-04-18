@@ -19,20 +19,19 @@ import java.util.Map;
 
 public class JsonStringStaticizerGenerator {
 
-    public TypeSpec generate(File input, FileConfig fileConfig) throws IOException {
+    public TypeSpec generate(File input, String targetJsonKey, String outputFileName) throws IOException {
         String currentTime = new SimpleDateFormat("MM/dd/yyyy  HH:mm:ss").format(new Date());
 
         Type type = new TypeToken<LinkedHashMap<String, Object>>() {
         }.getType();
 
         Map<String, Object> data = new Gson().fromJson(new FileReader(input), type);
-        String targetJsonKey = fileConfig.getTargetJsonKey();
         if(targetJsonKey != null && data.get(targetJsonKey) != null) {
             data = (Map<String, Object>) data.get(targetJsonKey);
         }
-        String outputFileName = fileConfig.getOutputFileName() != null ? fileConfig.getOutputFileName() : removeExtension(input.getAbsolutePath());
+        String oFileName = outputFileName != null ? outputFileName : removeExtension(input.getAbsolutePath());
 
-        TypeSpec.Builder builder = TypeSpec.classBuilder(outputFileName).addModifiers(Modifier.PUBLIC, Modifier.FINAL);
+        TypeSpec.Builder builder = TypeSpec.classBuilder(oFileName).addModifiers(Modifier.PUBLIC, Modifier.FINAL);
         builder.addJavadoc("Generated class based on the JSON file located \n " +
                 "in " + input.getPath() + "\n" +
                 "Generation time: " + currentTime + "\n");
