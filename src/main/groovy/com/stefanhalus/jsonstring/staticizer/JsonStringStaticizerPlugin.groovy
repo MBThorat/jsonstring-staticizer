@@ -57,4 +57,9 @@ class JsonStringStaticizerPlugin implements Plugin<Project> {
 class PluginConfig {
     def String packageName
     def String sourceDir
+    def FileConfig[] fileConfigList
+}
+class FileConfig {
+    def String fileName
+    def String targetJsonKey
 }
