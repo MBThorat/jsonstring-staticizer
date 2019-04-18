@@ -20,32 +20,17 @@ public class JsonStringStaticizerTask extends DefaultTask {
     @TaskAction
     public void execute(IncrementalTaskInputs inputs) {
         def packageName = project.jsonStringStaticizer.packageName
-        def sourceDir = project.jsonStringStaticizer.sourceDir
         def FileConfig[] files = project.jsonStringStaticizer.fileConfigList
         if (!packageName) {
             throw new IllegalStateException('localizations.packageName is undefined!')
         }
-        if (!sourceDir) {
-            throw new IllegalStateException('sourceDir is not defined')
-        }
-
-        inputDir = new File(project.getProjectDir(), sourceDir)
 
         def localizationsGenerator = new JsonStringStaticizerGenerator()
 
-        if (files != null) {
-            for(FileConfig fileConfig : files) {
-                def inputFile = new File(project.getProjectDir(), sourceDir + "/" + fileConfig.fileName)
-                TypeSpec generated = localizationsGenerator.generate(inputFile, fileConfig.targetJsonKey)
-                localizationsGenerator.writeToOutput(packageName, outputDir, generated)
-            }
-        } else {
-            for (File input : inputDir.listFiles()) {
-                if (input.isFile()) {
-                    TypeSpec generated = localizationsGenerator.generate(input, null)
-                    localizationsGenerator.writeToOutput(packageName, outputDir, generated)
-                }
-            }
+        for(FileConfig fileConfig : files) {
+            def inputFile = new File(project.getProjectDir(), fileConfig.fileName)
+            TypeSpec generated = localizationsGenerator.generate(inputFile, fileConfig)
+            localizationsGenerator.writeToOutput(packageName, outputDir, generated)
         }
     }
 }

@@ -1,5 +1,6 @@
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
+import com.stefanhalus.jsonstring.staticizer.FileConfig;
 import com.stefanhalus.jsonstring.staticizer.JsonStringStaticizerGenerator;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class GeneratorTest {
         assertEquals(true, file.exists());
 
         JsonStringStaticizerGenerator generator = new JsonStringStaticizerGenerator();
-        TypeSpec generated = generator.generate(file, "Localization");
+        TypeSpec generated = generator.generate(file, new FileConfig("","Localization", "Localization"));
         JavaFile.builder("", generated).build().writeTo(System.out);
 
     }
