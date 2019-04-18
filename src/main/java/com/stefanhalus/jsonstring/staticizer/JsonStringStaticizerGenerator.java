@@ -19,13 +19,16 @@ import java.util.Map;
 
 public class JsonStringStaticizerGenerator {
 
-    void generate(File input, File outputDir, String packageName) throws IOException {
+    public TypeSpec generate(File input, String targetKey) throws IOException {
         String currentTime = new SimpleDateFormat("MM/dd/yyyy  HH:mm:ss").format(new Date());
 
         Type type = new TypeToken<LinkedHashMap<String, Object>>() {
         }.getType();
 
-        LinkedHashMap<String, Object> data = new Gson().fromJson(new FileReader(input), type);
+        Map<String, Object> data = new Gson().fromJson(new FileReader(input), type);
+        if(targetKey != null && data.get(targetKey) != null) {
+            data = (Map<String, Object>) data.get(targetKey);
+        }
         String basename = removeExtension(input.getAbsolutePath());
 
         TypeSpec.Builder builder = TypeSpec.classBuilder(basename).addModifiers(Modifier.PUBLIC, Modifier.FINAL);
@@ -34,7 +37,7 @@ public class JsonStringStaticizerGenerator {
                 "Generation time: " + currentTime + "\n");
 
         for (Map.Entry<String, Object> entry : data.entrySet()) {
-            String fieldName = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, entry.getKey());
+            String fieldName = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, entry.getKey().replace(".", "_"));
             FieldSpec.Builder field;
 
             if (entry.getValue() instanceof String) {
@@ -51,7 +54,11 @@ public class JsonStringStaticizerGenerator {
             builder.addField(field.build());
         }
 
-        JavaFile.builder(packageName, builder.build())
+        return builder.build();
+    }
+
+    public void writeToOutput(String packageName, File outputDir,  TypeSpec typeSpec) throws IOException {
+        JavaFile.builder(packageName, typeSpec)
                 .build()
                 .writeTo(outputDir);
     }

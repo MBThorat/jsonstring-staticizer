@@ -1,5 +1,6 @@
 package com.stefanhalus.jsonstring.staticizer
 
+import com.squareup.javapoet.TypeSpec
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.OutputDirectory
@@ -17,6 +18,7 @@ public class JsonStringStaticizerTask extends DefaultTask {
     public void execute(IncrementalTaskInputs inputs) {
         def packageName = project.jsonStringStaticizer.packageName
         def sourceDir = project.jsonStringStaticizer.sourceDir
+        def targetJsonKey = project.jsonStringStaticizer.targetJsonKey
         if (!packageName) {
             throw new IllegalStateException('localizations.packageName is undefined!')
         }
@@ -30,7 +32,8 @@ public class JsonStringStaticizerTask extends DefaultTask {
 
         for (File input : inputDir.listFiles()) {
             if (!input.name.startsWith(".")) {
-                localizationsGenerator.generate(input, outputDir, packageName);
+                TypeSpec generated = localizationsGenerator.generate(input, targetJsonKey);
+                localizationsGenerator.writeToOutput(packageName, outputDir, generated)
             }
         }
     }
