@@ -29,14 +29,10 @@ apply plugin: 'com.stefanhalus.jsonstring.staticizer'
 
 jsonStringStaticizer {
     packageName 'com.desired.package.for.generated.class'
-    sourceDir 'src/main/localizations' // source dir of Json files
-    
-    //If fileConfigList is missing, all files in <sourceDir> will be considered
+
     fileConfigList = [
-            [fileName: 'Localizations.json'],
-            [fileName: 'eng.json', targetJsonKey: 'Localization'],
-            [fileName: 'eng1.json', targetJsonKey: 'Localization'],
-            [fileName: 'test/eng3.json', targetJsonKey: 'Localization']
+            [fileName: 'src/main/assets/Localizations.json', targetJsonKey: 'Localization'],
+            [fileName: 'src/main/assets/eng.json', targetJsonKey: 'Localization', outputFileName: 'LocalizationKeys']
     ]
 }
 ```
