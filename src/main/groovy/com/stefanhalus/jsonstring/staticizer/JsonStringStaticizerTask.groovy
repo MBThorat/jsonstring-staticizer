@@ -41,7 +41,7 @@ public class JsonStringStaticizerTask extends DefaultTask {
             }
         } else {
             for (File input : inputDir.listFiles()) {
-                if (!input.name.startsWith(".")) {
+                if (input.isFile()) {
                     TypeSpec generated = localizationsGenerator.generate(input, null)
                     localizationsGenerator.writeToOutput(packageName, outputDir, generated)
                 }
