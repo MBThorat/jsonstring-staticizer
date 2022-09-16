@@ -11,7 +11,7 @@ import org.gradle.api.tasks.incremental.IncrementalTaskInputs
 import java.util.function.Consumer
 
 public class JsonStringStaticizerTask extends DefaultTask {
-    //@InputDirectory
+    @InputDirectory
     File inputDir
 
     @OutputDirectory
